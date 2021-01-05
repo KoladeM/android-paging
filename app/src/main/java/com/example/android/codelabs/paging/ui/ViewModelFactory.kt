@@ -19,12 +19,14 @@ package com.example.android.codelabs.paging.ui
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.android.codelabs.paging.data.GithubRepository
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 /**
  * Factory for ViewModels
  */
-class ViewModelFactory(private val repository: GithubRepository) : ViewModelProvider.Factory {
+class ViewModelFactory @OptIn(ExperimentalCoroutinesApi::class) constructor(private val repository: GithubRepository) : ViewModelProvider.Factory {
 
+    @OptIn(ExperimentalCoroutinesApi::class)
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(SearchRepositoriesViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
